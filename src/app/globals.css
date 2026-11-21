@@ -1,0 +1,445 @@
+/* Quillbrook Bakehouse: warm and homely.
+   Every text colour pair below passes WCAG AA contrast (4.5:1 or more),
+   and form-field borders reach 3:1. */
+
+:root {
+  --bg: #fbf4e8;
+  --panel: #ffffff;
+  --band: #f1e4cf;
+  --photo: #f3e7d3;
+  --text: #3b2a1e;
+  --muted: #5e4a3b;
+  --line: #cdb89b; /* decorative dashed borders */
+  --field-border: #9c8466; /* 3:1 or more against white, for form fields */
+  --accent: #a84a2a;
+  --accent-dark: #8e3d22;
+  --on-accent: #ffffff;
+  --error: #9e1f33;
+  --error-bg: #fbe6e4;
+
+  --font-head: "Fraunces Variable", Georgia, "Times New Roman", serif;
+  --font-body: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius: 12px;
+  --max: 1120px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.9375rem;
+}
+
+/* Skip link: hidden until focused with the keyboard. */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -64px;
+  padding: 12px 16px;
+  background: var(--panel);
+  color: var(--text);
+  border-radius: var(--radius);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+.demo-banner {
+  background: var(--band);
+  color: var(--text);
+  text-align: center;
+  font-size: 0.8125rem;
+  padding: 8px 24px;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+}
+
+.logo {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.625rem;
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: center;
+}
+
+.site-header nav a:not(.button) {
+  color: var(--text);
+  text-decoration: none;
+  padding-block: 12px;
+}
+
+.site-header nav a:not(.button):hover {
+  text-decoration: underline;
+}
+
+/* Buttons: at least 44px tall for easy tapping. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 28px;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+}
+
+.button-small {
+  min-height: 44px;
+  padding: 0 20px;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.button-primary:hover {
+  background: var(--accent-dark);
+  color: var(--on-accent);
+}
+
+.button-primary:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.button-outline {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.button-outline:hover {
+  background: var(--panel);
+  color: var(--text);
+}
+
+/* Photos */
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--photo);
+}
+
+.photo img {
+  object-fit: cover;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  padding-block: 32px 80px;
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  max-width: 820px;
+}
+
+.lead {
+  font-size: 1.1875rem;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.hero-photo {
+  width: 100%;
+  max-width: 880px;
+  height: 420px;
+  margin-top: 16px;
+  /* The arch: a fully rounded top over squarer bottom corners. */
+  border-radius: 440px 440px 24px 24px;
+}
+
+/* Keeps the loaves, low in the frame, inside the arch. */
+.hero-photo img {
+  object-position: 50% 70%;
+}
+
+/* Today's bakes */
+.panel {
+  background: var(--panel);
+  padding-block: 80px;
+}
+
+.panel h2,
+.story h2,
+.order h2 {
+  font-size: clamp(2.25rem, 4.5vw, 2.75rem);
+}
+
+.bake-grid {
+  list-style: none;
+  padding: 0;
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.bake {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bake-photo {
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+}
+
+.bake h3 {
+  font-size: 1.1875rem;
+  font-weight: 600;
+}
+
+.price {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Story */
+.story {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px;
+  padding-block: 80px;
+}
+
+.story-text {
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 1.0625rem;
+}
+
+.story-photo {
+  flex: 1 1 340px;
+  height: 340px;
+}
+
+/* Order */
+.order-section {
+  background: var(--band);
+  padding-block: 80px;
+}
+
+.order {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-wide {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.field input,
+.field textarea {
+  font: inherit;
+  padding: 12px 14px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+}
+
+.field input {
+  min-height: 48px;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 112px;
+}
+
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border: 2px solid var(--error);
+}
+
+.field-error {
+  color: var(--error);
+  font-size: 0.875rem;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+}
+
+.form-status-success {
+  background: var(--panel);
+  color: var(--text);
+}
+
+.form-status-error {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+/* Footer */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: space-between;
+  padding-block: 64px;
+}
+
+.footer-heading {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.credit {
+  align-self: flex-end;
+}
+
+/* Phones */
+@media (max-width: 560px) {
+  .order-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-photo {
+    height: 300px;
+  }
+
+  .story-photo {
+    height: 260px;
+  }
+}
