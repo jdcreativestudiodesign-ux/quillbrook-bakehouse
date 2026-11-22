@@ -1,5 +1,7 @@
 # Quillbrook Bakehouse: landing page with order-ahead
 
+[![tests](https://github.com/jdcreativestudiodesign-ux/quillbrook-bakehouse/actions/workflows/test.yml/badge.svg)](https://github.com/jdcreativestudiodesign-ux/quillbrook-bakehouse/actions/workflows/test.yml)
+
 **Portfolio sample by jdcreative.studiodesign.** The bakery, its prices and its details are invented. The page, the order form and the tests are real.
 
 A warm, mobile-first one-page site for a small bakery: today's bakes with prices, the bakery's story, opening hours, and an order-ahead form that checks each order before it is accepted.
